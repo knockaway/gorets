@@ -6,7 +6,7 @@ import (
 	"io"
 	"log"
 
-	"github.com/jpfielding/gorets/pkg/rets"
+	"github.com/knockaway/gorets/pkg/rets"
 	"github.com/jpfielding/gowirelog/wirelog"
 	"golang.org/x/net/proxy"
 )

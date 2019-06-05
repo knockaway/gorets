@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/jpfielding/gorets/pkg/proxy"
+	"github.com/knockaway/gorets/pkg/proxy"
 )
 
 // TODO read in login params, get source config from url path

@@ -9,10 +9,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/jpfielding/gorets/pkg/config"
-	"github.com/jpfielding/gorets/pkg/metadata"
-	"github.com/jpfielding/gorets/pkg/rets"
-	"github.com/jpfielding/gorets/pkg/util"
+	"github.com/knockaway/gorets/pkg/config"
+	"github.com/knockaway/gorets/pkg/metadata"
+	"github.com/knockaway/gorets/pkg/rets"
+	"github.com/knockaway/gorets/pkg/util"
 )
 
 // MetadataService ...

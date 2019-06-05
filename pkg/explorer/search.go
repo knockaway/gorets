@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/jpfielding/gorets/pkg/config"
-	"github.com/jpfielding/gorets/pkg/rets"
+	"github.com/knockaway/gorets/pkg/config"
+	"github.com/knockaway/gorets/pkg/rets"
 )
 
 // SearchArgs ...

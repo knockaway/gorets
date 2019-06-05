@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jpfielding/gorets/pkg/rets"
+	"github.com/knockaway/gorets/pkg/rets"
 )
 
 // Metadata ...
