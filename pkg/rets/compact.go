@@ -145,6 +145,7 @@ func (cr CompactRow) Parse(delim string) Row {
 		// the spec says delim is an octet, so this should be the common code path
 		reader := csv.NewReader(strings.NewReader(string(cr)))
 		reader.Comma = rune(delim[0])
+		reader.LazyQuotes = true
 
 		r, err := reader.Read()
 		if err != nil {
