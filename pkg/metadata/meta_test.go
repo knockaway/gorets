@@ -50,5 +50,5 @@ func TestSystemHierarchyCount(t *testing.T) {
 		}
 		return counter
 	}
-	assert.Equal(t, 25, count(MISystem))
+	assert.Equal(t, 27, count(MISystem))
 }

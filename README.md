@@ -1,13 +1,9 @@
-gorets
+# gorets
+
+Upstream code can be found here https://github.com/jpfielding/gorets, this repo has some minor changes and bug fixes from upstream since that project seems deadish. This is open source to comply with the GPL, and will not be monitoring issues or PRs at this time.
+
 ======
-
 RETS client in Go
-
-[![Build Status](https://travis-ci.org/jpfielding/gorets.svg?branch=master)](https://travis-ci.org/jpfielding/gorets)
-[![GoDoc](https://godoc.org/github.com/jpfielding/gorets?status.svg)](https://godoc.org/github.com/jpfielding/gorets)
-[![Docker](https://goreportcard.com/badge/github.com/jpfielding/gorets)](https://goreportcard.com/report/github.com/jpfielding/gorets)
-
-
 
 The attempt is to meet [RETS 1.8.0](https://www.reso.org/specifications/) compliance.
 

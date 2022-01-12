@@ -1,6 +1,7 @@
 package rets
 
 import (
+	"encoding/csv"
 	"encoding/xml"
 	"fmt"
 	"reflect"
@@ -136,14 +137,28 @@ func (cr CompactRow) Parse(delim string) Row {
 	if delim == "" {
 		delim = CompactDefaultDelim
 	}
-	split := strings.Split(asString, delim)
+
+	var ret []string
+	if len(delim) > 1 {
+		ret = strings.Split(asString, delim)
+	} else {
+		// the spec says delim is an octet, so this should be the common code path
+		reader := csv.NewReader(strings.NewReader(string(cr)))
+		reader.Comma = rune(delim[0])
+
+		r, err := reader.Read()
+		if err != nil {
+			panic(err) // kind of a bummer... might want to return this error
+		}
+		ret = r
+	}
 	start := 0
 	if strings.HasPrefix(asString, delim) {
 		start = 1
 	}
-	len := len(split)
+	len := len(ret)
 	if strings.HasSuffix(asString, delim) {
 		len = len - 1
 	}
-	return split[start:len]
+	return ret[start:len]
 }
