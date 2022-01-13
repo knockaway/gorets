@@ -39,17 +39,6 @@ func TestCompactRowParsing(t *testing.T) {
 	assert.Equal(t, 6, int(len(values)))
 }
 
-func TestCompactRowParsingwithQuotes(t *testing.T) {
-	var col = `	A	B	C	D	E	F	Q`
-	var row = `	1	2	3	4		6	"	7	"`
-	var delim = `	`
-	headers := CompactRow(col).Parse(delim)
-	values := CompactRow(row).Parse(delim)
-
-	assert.Equal(t, 7, int(len(headers)))
-	assert.Equal(t, 7, int(len(values)))
-}
-
 func TestCompactRowParsingEmpty(t *testing.T) {
 	var col = `	A	B	C	D	E	F	`
 	var row = ``
