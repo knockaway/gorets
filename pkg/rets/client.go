@@ -1,13 +1,13 @@
 package rets
 
 import (
+	"net"
 	"net/http"
 	"net/http/cookiejar"
 	"time"
 
 	"context"
 
-	"github.com/jpfielding/gowirelog/wirelog"
 	"golang.org/x/net/context/ctxhttp"
 )
 
@@ -43,10 +43,27 @@ func DefaultSession(user, pwd, userAgent, userAgentPw, retsVersion string, trans
 	return DefaultSessionWithTimeout(user, pwd, userAgent, userAgentPw, retsVersion, transport, nil)
 }
 
+// NewHTTPTransport from https://golang.org/src/net/http/transport.go
+func NewHTTPTransport() *http.Transport {
+	return &http.Transport{
+		Proxy: http.ProxyFromEnvironment,
+		DialContext: (&net.Dialer{
+			Timeout:   30 * time.Second,
+			KeepAlive: 30 * time.Second,
+			DualStack: true,
+		}).DialContext,
+		ForceAttemptHTTP2:     false,
+		MaxIdleConns:          100,
+		IdleConnTimeout:       90 * time.Second,
+		TLSHandshakeTimeout:   10 * time.Second,
+		ExpectContinueTimeout: 1 * time.Second,
+	}
+}
+
 // DefaultSessionWithTimeout configures the default rets session with a timeout
 func DefaultSessionWithTimeout(user, pwd, userAgent, userAgentPw, retsVersion string, transport http.RoundTripper, timeout *time.Duration) (Requester, error) {
 	if transport == nil {
-		transport = wirelog.NewHTTPTransport()
+		transport = NewHTTPTransport()
 	}
 
 	client := http.Client{
